@@ -1,0 +1,40 @@
+1) Listar o modelo e nome da marca dos carros somente com marca cadastrada
+
+SELECT mo.descricao, ma.nome FROM  modelo mo
+INNER JOIN  marca ma
+ON mo.codigo_marca = ma.codigo_marca;
+---------------------------------------------
+
+2) Listar o preço médio dos carros
+
+SELECT ROUND(AVG(preco),2) from modelo;
+----------------------------------------
+
+3) Listar a quantidade total de carros com uma marca cadastrada
+
+SELECT COUNT(*) FROM  modelo mo
+INNER JOIN  marca ma
+ON mo.codigo_marca = ma.codigo_marca;
+--------------------------------------
+
+4) Listar todos os carros inclusive os sem marca
+
+SELECT mo.descricao, ma.nome FROM  modelo mo
+LEFT JOIN  marca ma
+ON mo.codigo_marca = ma.codigo_marca;
+--------------------------------------------
+
+5) Listar a quantidade de carros (modelos) da marca Fiat
+
+SELECT count(*) FROM  modelo mo
+WHERE mo.codigo_marca=6
+--------------------------------
+
+6) Exibir o carro mais barato
+
+SELECT  min(preco) as valor FROM  modelo mo;
+---------------------------------------------
+
+7) Atualizar o preço do modelo HB20S em 10% do valor atual
+
+UPDATE modelo SET preco = preco * 1.10 	WHERE codigo_modelo = 9;

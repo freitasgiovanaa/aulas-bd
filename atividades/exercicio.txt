@@ -1,0 +1,32 @@
+create table  marca(codigo_marca serial primary key, nome varchar(40));
+/*insert into marca (nome) values ('Hyundai'),
+                                ('Ford'),
+								('Renault'),
+								('Nissan'),
+								('Kia'),
+								('Fiat'),
+								('VW');*/
+
+/*create table modelo (codigo_modelo serial primary key,
+					descricao varchar(50), preco numeric check( preco > 60000),
+					codigo_marca smallint, foreign key (codigo_marca) references marca(codigo_marca));*/
+					
+/*insert into modelo (descricao,preco,codigo_marca) values('Gol',70000,7);
+insert into modelo (descricao,preco,codigo_marca) values('HB20',72000,1);
+insert into modelo (descricao,preco,codigo_marca) values('HB20S',76000,1);
+insert into modelo (descricao,preco,codigo_marca) values('Cerato',76200,5);
+insert into modelo (descricao,preco,codigo_marca) values('Ka',73500,2);
+insert into modelo (descricao,preco,codigo_marca) values('ECO SPORT',94500,2);
+insert into modelo (descricao,preco,codigo_marca) values('SIENA',65000,6);*/
+
+/*select mo.descricao, ma.nome, mo.preco from modelo as mo, marca as ma
+where ma.codigo_marca = mo.codigo_marca and ma.nome = 'Hyundai' and mo.preco > 73000
+order by preco desc*/
+
+select * from modelo where codigo_modelo not in (7,10,11);
+
+
+
+create table cliente(codigo_cliente serial primary key, nome varchar(50)not null,
+					email varchar(40)not null unique, tipo char check (tipo = 'F' or tipo = 'J'),
+					data_nascimento date);

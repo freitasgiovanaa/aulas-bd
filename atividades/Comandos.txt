@@ -1,0 +1,35 @@
+Preço dos modelos acima da média:
+
+select mo.descricao, mo.preco from modelo mo where mo.preco >
+(
+select round (avg(preco),2) from modelo);
+-----------------------------------------------
+
+Agrupar os modelos e retornar o preço mínimo do modelo:
+
+select * from modelo where preco in
+(select min(preco) as preco_minimo from modelo
+group by codigo_marca);
+----------------------------------------------------
+
+Listar as marcas que não possuem modelos cadastrados:
+
+select * from marca where not exists (select * from modelo 
+where modelo.codigo_marca = marca.codigo_marca)
+
+ou
+
+select * from marca where marca.codigo_marca not in
+(select MO.CODIGO_MARCA from modelo as mo 
+inner join marca as m
+on mo.codigo_marca = m.codigo_marca
+ );
+---------------------------------------------------------------
+
+Criar um atalho para encurtar o código de visualizar tabelas diferentes:
+
+create view view_marca_modelo as 
+select modelo.descricao, marca.nome from modelo, marca 
+where modelo.codigo_marca = marca.codigo_marca;
+
+select * from public.view_marca_modelo 

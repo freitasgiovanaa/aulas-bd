@@ -1,0 +1,38 @@
+1) Retornar os livros emprestados.
+
+select emp.id_livro, li.titulo, emp.valor_emprestimo, emp.data_devolucao 
+    from emprestimo emp, livro li 
+        where emp.id_livro = li.id_livro;
+---------------------------------------------------------------------------	
+2) Retornar os livros que não foram emprestados.
+
+select l.titulo, l.id_livro from livro l 
+ where l.id_livro 
+  not in (select id_livro from emprestimo);
+---------------------------------------------------------------------------
+3) Contar quantos livros foram emprestados.
+
+select count(id_livro) from emprestimo;
+---------------------------------------------------------------------------
+4) A quantidade de livros que cada autor tem.
+
+select au.nome, count(li.id_livro) from autor au
+ left join livro li on au.id_autor = li.id_autor
+  group by au.nome;
+---------------------------------------------------------------------------
+5) Exibir os livros do mais caro ao mais barato em ordem.
+
+select l.titulo, e.valor_emprestimo 
+  from emprestimo e, livro l 
+    where e.id_livro = l.id_livro
+      order by valor_emprestimo desc;
+---------------------------------------------------------------------------
+6) Apagar um autor consequentemente seu livro deverá ser automaticamente apagado.
+
+delete from autor where id_autor = 5;
+
+7) Mostra o total arrecado em empréstimo de um determinado livro
+
+select sum(e.valor_emprestimo) 
+  from emprestimo e where e.id_livro = 7;
+---------------------------------------------------------------------------

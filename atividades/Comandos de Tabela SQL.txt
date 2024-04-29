@@ -1,0 +1,23 @@
+LISTAR TODOS OS CLIENTES QUE SAO DO TIPO J? 
+select * from cliente where tipo_cliente='J'; 
+---------------------------------------------------- 
+ 
+LISTAR A QUANTIDADE DE EDITORAS? 
+select count(*qualquer coluna) from editora as ed; 
+----------------------------------------------------  
+
+LISTAR O LIVRO MAIS CARO? 
+select MAX(li.preco) from livro as li;
+ ----------------------------------------------------  
+
+LISTAR O LIVRO MAIS BARATO? 
+select MIN(li.preco) from livro as li;
+ ----------------------------------------------------
+
+TOTAL DA COMPRA (CARRINHO) NUMERO_NOTA 121?
+select sum(valor_compra) from carrinho WHERE numero_nota = 121;
+-----------------------------------------------------
+
+ATUALIZAR A QUANTIDADE EM ESTOQUE(ENTRADA DE 10 LIVROS) 
+DO LIVRO DE ISBN 12345
+UPDATE livro SET quantidade_estoque = quantidade_estoque + 10  WHERE isbn = '12345'; 
